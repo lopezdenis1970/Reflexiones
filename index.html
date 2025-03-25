@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reflexiones Digital Edition (Prototype)</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        img {
+            max-width: 90%;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reflexiones Digital Edition</h1>
+    <img id="pageImage" src="./barrera_page_001.png" alt="Barrera Page">
+    <div class="nav-buttons">
+        <button onclick="prevPage()">Previous</button>
+        <span id="pageCounter">1 / 20</span>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
+    <script>
+        const images = ['./barrera_page_001.png', './barrera_page_002.png', './barrera_page_003.png', './barrera_page_004.png', './barrera_page_005.png', './barrera_page_006.png', './barrera_page_007.png', './barrera_page_008.png', './barrera_page_009.png', './barrera_page_010.png', './barrera_page_011.png', './barrera_page_012.png', './barrera_page_013.png', './barrera_page_014.png', './barrera_page_015.png', './barrera_page_016.png', './barrera_page_017.png', './barrera_page_018.png', './barrera_page_019.png', './barrera_page_020.png'];
+        let currentPage = 0;
+
+        function updateImage() {
+            document.getElementById('pageImage').src = images[currentPage];
+            document.getElementById('pageCounter').innerText = (currentPage + 1) + ' / ' + images.length;
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updateImage();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < images.length - 1) {
+                currentPage++;
+                updateImage();
+            }
+        }
+    </script>
+</body>
+</html>
