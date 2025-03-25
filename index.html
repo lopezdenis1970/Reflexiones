@@ -3,198 +3,110 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reflexiones Digital Edition (Readable Transcriptions)</title>
+    <title>Reflexiones Digital Edition - Demo Split Panel</title>
     <style>
         body {
-            background: #111;
-            color: #eee;
-            text-align: center;
+            margin: 0;
             font-family: sans-serif;
+            background-color: #111;
+            color: #eee;
         }
-        img {
-            max-width: 90%;
-            margin: 20px 0;
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        .container {
+            display: flex;
+            height: 100vh;
         }
-        button {
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .left-panel {
+            background-color: #000;
+            text-align: center;
+        }
+        .right-panel {
+            background-color: #1c1c1c;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #444;
+            margin-bottom: 20px;
+        }
+        .tab {
             padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
             cursor: pointer;
+            background-color: #333;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #555;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
         pre {
-            background: #222;
-            color: #eee;
-            padding: 20px;
-            text-align: left;
-            max-width: 90%;
-            margin: 20px auto;
             white-space: pre-wrap;
-            display: none;
+            line-height: 1.5;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
             border: 1px solid #444;
         }
     </style>
     <script>
-        function toggleTranscription(id) {
-            const pre = document.getElementById(id);
-            pre.style.display = pre.style.display === "none" ? "block" : "none";
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`[data-tab='${tabId}']`).classList.add('active');
         }
     </script>
 </head>
 <body>
-    <h1>Reflexiones Digital Edition</h1>
+    <div class="container">
+        <div class="left-panel">
+            <h2>Página Facsímil</h2>
+            <img src="barrera_page_001.png" alt="Página 1 de Barrera">
+        </div>
+        <div class="right-panel">
+            <div class="tabs">
+                <div class="tab active" data-tab="transcripcion" onclick="showTab('transcripcion')">Transcripción</div>
+                <div class="tab" data-tab="fuente" onclick="showTab('fuente')">Texto Fuente</div>
+                <div class="tab" data-tab="original" onclick="showTab('original')">Original Extranjero</div>
+                <div class="tab" data-tab="comentario" onclick="showTab('comentario')">Comentario</div>
+            </div>
+            <div id="transcripcion" class="tab-content active">
+                <pre>
+AL LECTOR
 
-    <hr>
-    <h2>Page 1</h2>
-    <img src="barrera_page_001.png" alt="Barrera Page 1">
-    <button onclick="toggleTranscription('t1')">Show Transcription</button>
-    <pre id="t1"></pre>
-    
-    <hr>
-    <h2>Page 2</h2>
-    <img src="barrera_page_002.png" alt="Barrera Page 2">
-    <button onclick="toggleTranscription('t2')">Show Transcription</button>
-    <pre id="t2">LIBRARY Author: BAEEERA Y DOmOO (F.) Reflexiones his-%^co, físico, naturales, medico, gtiirurgioas ; Acc. No. Ckss Mark Date Volume 82474 f.SOlT.D 1953
-
-</pre>
-    
-    <hr>
-    <h2>Page 3</h2>
-    <img src="barrera_page_003.png" alt="Barrera Page 3">
-    <button onclick="toggleTranscription('t3')">Show Transcription</button>
-    <pre id="t3">LSHTM 001 1 172042
-
-</pre>
-    
-    <hr>
-    <h2>Page 4</h2>
-    <img src="barrera_page_004.png" alt="Barrera Page 4">
-    <button onclick="toggleTranscription('t4')">Show Transcription</button>
-    <pre id="t4"></pre>
-    
-    <hr>
-    <h2>Page 5</h2>
-    <img src="barrera_page_005.png" alt="Barrera Page 5">
-    <button onclick="toggleTranscription('t5')">Show Transcription</button>
-    <pre id="t5"></pre>
-    
-    <hr>
-    <h2>Page 6</h2>
-    <img src="barrera_page_006.png" alt="Barrera Page 6">
-    <button onclick="toggleTranscription('t6')">Show Transcription</button>
-    <pre id="t6"></pre>
-    
-    <hr>
-    <h2>Page 7</h2>
-    <img src="barrera_page_007.png" alt="Barrera Page 7">
-    <button onclick="toggleTranscription('t7')">Show Transcription</button>
-    <pre id="t7">I HISTORICO FISICO NATURALES MEDICO QUIRURGICAS Prácticos y especulativos entretenimientos acerca de la vida, usos, costumbres, alimentos, bestidos, color y enferme- dades a que propenden los negros de Africa, venidos a las Américas. Por cl LICENCIADO FRANCISCO BARRERA Y DOMINGO EDICIONES La Habana
-
-</pre>
-    
-    <hr>
-    <h2>Page 8</h2>
-    <img src="barrera_page_008.png" alt="Barrera Page 8">
-    <button onclick="toggleTranscription('t8')">Show Transcription</button>
-    <pre id="t8">En preparación: CARTAS ESCRITAS DESDE EL INTERIOR DE CUBA Por el Rev. ABIEL ABBOT. (1829) EPISTOLARIO DE DON CASIMIRO ARANGO (1777-1796)
-
-</pre>
-    
-    <hr>
-    <h2>Page 9</h2>
-    <img src="barrera_page_009.png" alt="Barrera Page 9">
-    <button onclick="toggleTranscription('t9')">Show Transcription</button>
-    <pre id="t9">REFLEXIONES HISTORICO FISICO NATURALES MEDICO QUIRURGICAS Prácticos y especulativos entretenimientos acerca de la vida, usos, costumbres, alimentos, bestidos, color, y enfermedades a que propenden los negros de Africa, venidos a las Américas. Breve análisis de los reinos mineral, vegetal y animal. Finalmente se detallan en un discurso compendioso los conocimientos más útiles de la naturaleza. Reuniendo en él los característicos sentimientos de la caridad española, para la conversión de negros, e yndios y el horror que estos tienen o conciven de las otras naciones europeas con particularidad a la anglicana, y República Francesa, de cuyas dos naciones han aprehendido estos infehces el esphn, es decir, la última maldad de acabar la vida por sus mesmas manos. Livro Segundo y Período Segundo, Comenta esta obra, con varias adiciones y enfermedades nuevas, para vien de la humanidad. ef Lícenciacío Francisco Barrera y Domingo Havana 23 de Julio de el año 1798.
-
-</pre>
-    
-    <hr>
-    <h2>Page 10</h2>
-    <img src="barrera_page_010.png" alt="Barrera Page 10">
-    <button onclick="toggleTranscription('t10')">Show Transcription</button>
-    <pre id="t10">Copyright, 1953 by Ediciones C. R. Calle Cuba No. 64, La Habana Impreso en Cuba - BURGAY Y CIA. - Amistad 353 - Habana
-
-</pre>
-    
-    <hr>
-    <h2>Page 11</h2>
-    <img src="barrera_page_011.png" alt="Barrera Page 11">
-    <button onclick="toggleTranscription('t11')">Show Transcription</button>
-    <pre id="t11">AL LECTOR ^ON las REFLEXIONES HISTORICO FISICO NATURALES MEDICO QUIRURGICAS del Licenciado Francisco Barrera y Domingo, acariciando un viejo proyecto que acaso no podamos realizar plenamente, nos proponemos iniciar una serie de publicaciones referentes a diversos períodos de la época colonial. Este notable documento llegó a manos del Doctor Manuel Pérez Beato en el año de 1910, confundido entre un montón de papeles y periódicos viejos, de los muchos que adquiría continuamente, sin que el vendedor ocasional que se lo proporcionara soñase en conce- derle la menor importancia ni un valor ligeramente superior al de cualquier otro papelucho amarillento y agujereado, de aquellos que todo el mundo habitualmente quemaba o arrojaba a la basura. (Así en una bodega, donde servían para envolver las mercancías, Don Manuel halló un gran número de escrituras y un epistolario que pronto verá la luz.) Aquel mismo año de 1910, en el No. 3-4 (época IV, año IV) de su "Curioso Americano" , el erudito historiador informaba a sus lectores sobre la existencia de este manuscrito original del Licenciado Francisco Barrera y Domingo, que acababa de recibir e instalar en su biblioteca con los honores debidos a un huésped tan interesante como inesperado. Y decía el autor de la "Habana Antigua", digno continuador de Don José M. de la Torre: "Nuestra escasa literatura médica del siglo XVIII y mitad del xix nos obliga a considerar de importancia para la historia de nuestra medicina todo documento que aporte datos para su estudio, y esta importancia aumenta al considerar que de lo poco que hemos producido, la mayor parte ha desaparecido por la acción del tiempo y de nuestra proverbial incuria. La adquisición de una obra médica manuscrita, de considerable extensión y de carácter exclusivamente local, constituye un verdadero hallazgo y merece ser conocida de nuestros médicos ya que desgraciada- mente no hay que pensar ni remotamente en que se dé a la prensa,
-
-</pre>
-    
-    <hr>
-    <h2>Page 12</h2>
-    <img src="barrera_page_012.png" alt="Barrera Page 12">
-    <button onclick="toggleTranscription('t12')">Show Transcription</button>
-    <pre id="t12">8 AL LECTOR como lo merece por su valor histórico y las ideas médicas y filosóficas de que hace gala su autor en diversas cuestiones importantes que en la obra se presentan. El trabado a que nos referimos, a pesar de la literatura incorrecta y del atraso médico que para nosotros representa, tiene un singular interés por su carácter indígena y por su especialidad en el conoci- miento de asuntos no tratados hasta su época por autores españoles ni extraños con relación a las antiguas colonias antillanas. El titulo ampuloso corresponde al gusto de la época, pero no por esto ha de formarse un concepto inferior del texto y de su autor. El análisis de los capítulos demuestra un conocimiento extenso de las obras médicas y filosóficas y una práctica nada común para su época." Pasaba Don Manuel a describir el manuscrito, Š "Z92 páginas de texto y 2 del tittilo con varias láminas que han sido arrancadas y en las cuales el autor demostraba los casos a que hacía referencia en la obra" Š y destacaba la humanitaria personalidad del licenciado, de quien todavía sólo sabemos que era natural de Aragón, que asistió a la expe- dición del Guarico, y ejerció muchos años en Cuba: "Lo más singular es la compasión que demuestra por los pobres negros a quienes trata con extremado cariño, y los cargos que fulmina contra los amos y mayorales de ingenios y contra los médicos cuya ignorancia, según él, hacía más desdichada la miserable condición de los esclavos. Por esta sola consideración es digno de alabanzas su valor cívico, bien impropio de los hombres de su época y especialmente de aquellos que tenían que librar su subsistencia en un medio tan contrario a sus altruistas ideales". Y concluye: "Además de la mucha lectura de las mejores obras de medicina e historia natural que demuestra el autor de este manuscrito, es muy notable su terapéutica, verdaderamente progresiva para su época. Hacía uso del sublimado corrosivo, el calotnel, la quina, etc., y se preciaba de haber introducido en Cuba el uso de la sal de la laguna de la Higuereta, o sulfato de magnesia. Son también muy notables sus preocupaciones dietéticas, entre las que se cuentan el uso de los caldos de viandas y de cereales, etc. Es también digno de atención su tratamiento para toda clase de úlceras, preconizando la necesidad de transformar las rebeldes en úl-
-
-</pre>
-    
-    <hr>
-    <h2>Page 13</h2>
-    <img src="barrera_page_013.png" alt="Barrera Page 13">
-    <button onclick="toggleTranscription('t13')">Show Transcription</button>
-    <pre id="t13">AL LECTOR 9 ceras simples" Y podría añadirse, su conocimiento de la psicología del africano, de su emotividad extraordinaria. Como adelantaba entonces Pérez Beato, al dar cuenta de su hallazgo, el interés de los cttadernos manuscritos del galeno aragonés que repro- ducimos, adoptando el criterio de no alterar su antictiada y arbitraria ortografía y puntuación, aunque esto haga su lectura más fatigosa, excede de los límites de la medicina y terapéutica de su época y se extienda a las costumbres, a la mentalidad, a la vida de la sociedad cubana del siglo xvin. El africanista, el historiador de aquella sociedad esclavista, hallará en las páginas del humano y generoso licenciado Barrera, un docu- mento contemporáneo de los días del despertar comercial y agrícola del país y del consigtüente aumento de la importación de "paquetes" o "piezas de ébano" destinados a los campos de caña, documento valio- sísimo Š salvando los escollos del estilo Š , por lo directo y penetrante de la observación, el sabor de verdad, la noble franqueza de sus con- clusiones. Observador conmovido, pero imparcial, de una parte alude a la vida, a veces envidiable del siervo doméstico "que los amos echan a perder por mimarlos con sobrada estimación y cariño", Š único fragmento de clara tonalidad en todo el cuadro sombrío que a lo largo de su experiencia, y de enfermería en enfermería, nos ha pintado del natural Š y aquella otra desgarradora del esclavo agrícola, confinado y condenado a trabajo y padecer perpetuo, a perpetua miseria, concep- tuado y tratado generalmente como una bestia humana en las haciendas e ingenios: "yn fiemos de por vida". Este contraste de inclemencia y de bondad, de tolerancia y convi- vencia afectuosa que no desmiente el temprano mestizaje y el número sorprendente de cartas de libertad desde los comienzos mismos de la importación de negros en la colonia escasamente poblada, hubo de pro- longarse, salvo excepciones, durante todo el régimen esclavista hasta sus postrimerías. "Cuba," escribe en el 1850 uno de los muchos autores abolicionistas que nos visitaron y nos dejaron escritas sus Í7n presiones, con más o menos apasionamientos, "es el infierno y el paraíso de los negros".
-
-</pre>
-    
-    <hr>
-    <h2>Page 14</h2>
-    <img src="barrera_page_014.png" alt="Barrera Page 14">
-    <button onclick="toggleTranscription('t14')">Show Transcription</button>
-    <pre id="t14">10 AL LECTOR Y otro dirá: "Cuba is a strange combination of misery and happiness to the Afrtcan". En su mayoría, los más exaltados contrarios de la esclavitud, que significaba entonces para toda alma bien nacida, lo cjue hoy y siempre significará, Š sea cual fuere el nombre o el disfraz que ésta adopte, Š el más imperdonable de los crímenes, convienen, sin embargo, con el Licenciado Barrera, que ésta no presentó en Cuba los caracteres feroces de crueldad que en otras colonias antillanas que también piído observar de cerca. Mas siguiendo los dictados de su espíritu de humanidad y simpatía, de tradición bien española, nuestro sincero licenciado no atenúa ni disimtda a favor de sus compatriotas y de sus descendientes criollos, los rigores inicuos de la esclavitud que aquí, a cada paso, le mueven a piedad por el oprimido y a indignación y desprecio por el opresor, "más vil que sus esclavos", y nos libra en estas páginas un testimonio real, minucioso, de la abyección moral de aquel sistema que había de ejercer una influencia nefasta en la formación de nuestro pueblo, resentido aún en sus raices de la tara esclavista. La publicación, pues, de este curioso manuscrito, aunque desgracia- damente postuma, debe considerarse como una contribución más del Doctor Manuel Pérez Beato a la historia del período colonial, entre las muchas y considerables que se le deben. Permaneció inédito durante tantos años porque las circunstancias adversas de una vida difícil, ejemplarmente digna y señera, le impidieron darlo a la estampa. Sin embargo, cuando le sorprende la muerte, a los ochenta y ocho años, pero infatigablemente laborioso, joven de espíritu, alerta y útil, se disponía a publicarlo, animado por nosotros, acompañándolo de notas y comentarios que hubieran duplicado su valor. Su hija, la Srta. Aurora Pérez Beato, al permitirnos darlo a conocer, nos brinda la oportunidad de rendir un merecido tributo a la memoria respetable de un hombre que sirvió tan desinteresadamente a la historia de nuestro país, rescatando con verdadero amor y sacrificio, tantos documentos que estaban fatalmente destinados a desaparecer. LYDIA CABRERA ^ARIA TERESA de WJAS
-
-</pre>
-    
-    <hr>
-    <h2>Page 15</h2>
-    <img src="barrera_page_015.png" alt="Barrera Page 15">
-    <button onclick="toggleTranscription('t15')">Show Transcription</button>
-    <pre id="t15">PROLOGO O CURIOSIDAD AL BENEBOLO LETOR DE MEDICINA Y CIRUGIA. Conozco amado letor, ya seas verdadero médico o cirujano, (o ya lo seas falso), que de todo hay en la viña de Dios, que esperas sin duda un aborto como el que dió el monte, que hiba de parto, que al último parió un ratón. Esperarás, vuelvo a decir, la obra que voy a presentarte, para que la perdones. Pero te pido encarecidamente, te hagas cargo, que el que la escribe, es un pobre serrano de la serranía de Albarracín y vien sabes, o por mejor decir, no ignoras, que los escritores aldeanos, son de limitados talentos. Así lo juzgan los que han nacido, y havitan en magníficas ciudades; y contemplándote uno de ellos, te pido por la caridad que deves tener, como católico, disimules quantos errores notes y desatinos halles. Porque no soy tan baño, que me induzca pre- sunción lo primero, que es el escribir alguna utilidad, y lo segundo, porque conozco tu piedad para con los pobres, (si es que la tie- nes) sin hipocresía. Día 9 de Febrero de el año 1797, tomé la pluma para hacer algunas averiguaciones mías que tenía ya hechas 17 años antes. No soy naturalista, pero sí observador de todo aquello que juzgue útil a la Facultad que profeso, Y esta es la principal causa que me ha movido ha acer experiencias en los pobrecitos negros esclabos. Por estos ynfelices, he abolido varios caminos y rutinas, sen- das, perjudiciales a su miserable vida, y é puesto en práctica, en esta gran ciudad de la Havana, mi tribial método de curar en muchísimas casas de grandes yngeníos, en las que se han salbado millares de miserables negros esclabos, con las curas que he logrado quasi milagrosas, a pesar de la miseria, descuido, mal trato en persona y sustento de estos infelices que gimen baxo el duro yugo de una exclabitud y riguroso castigo de amos y mayo- rales inhumanos, hijos legítimos de la hez de el pueblo faltos de principios ábiles y de el temor santo de Dios.
-
-</pre>
-    
-    <hr>
-    <h2>Page 16</h2>
-    <img src="barrera_page_016.png" alt="Barrera Page 16">
-    <button onclick="toggleTranscription('t16')">Show Transcription</button>
-    <pre id="t16">12 REFLEXIONES HISTORICO Pero antes de explicarte las costumbres, usos, alimentos, ves- tidos, emfermedades y otras cosas mas que verás en el discurso de este libro, quiero manifestarte los infortunios que estos mise- rables e infelices negros padecen por falta de médicos y cirujanos que los curen racional y caritatibamente. Los médicos que por lo común se aplican a sacrificar a estos pobrecitos en los ynge- nios para curar sus emfermedades, así internas como externas son unos profesores destituidos de principios médicos, faltos de estu- dio, pues muchos de ellos ni aun leher saben (falta muy grabe en el Real Protomedicato), ni menos tienen conocimiento alguno en la menor parte de la medicina. Confieso con toda la verdad, que ni se les puede llamar metó- dicos, ni menos apellidarlos empíricos. Tentó... pueden llamarse, por lo que a bulto y sin distinción exercitan. Y a modo de su grandísima ignorancia, quieren aparentar sabiduría (entre algu- nos buenos españoles), trascendiendo los límites de su profesión y ofreciendo obras y obserbaciones que no han echo, ni menos son capaces de hacer por falta de principios, luces y conocimien- tos médicos, y anatómicos. Ofecen sufragios con adulaciones, embrollos y mentiras de pretendida caridad y amor a los pobres negros, quando todo les falta; porque la impostura en todo dá vozes, acusando la sin razón con título de caridad médica (y bien público); no sólo son intrusos a curar todo género de achaques, sin tener más noticia de ellos que el saver como se llaman, y lo peor es que también estampan sus errores brugeliándolos con algunos biejos sucesos, (que quasi, si es verdad), todos son casua- les, si ya no son mas que de su acierto, efectos de la divina mise- ricordia, por necesitar los tales más de los subsidios divinos, que no de los humanos. También confieso que a costa de grabes daños en los pobre- citos negros, aunque sin escarmiento de sus conciencias, se han hecho algunos médicos y cirujanos medianamente prácticos en su profesión aunque sin más estudios los primeros, que a Riberio, Piquer y Virrey y algunos también la Medicina Scéptica de Mar- tín Martínez. Los segundos saben como el papagayo el examen de Martín Martínez, los secretos de Curbo y las recetas de Madama Foutguel. y con estos Platones meten más bulla que se
-
-</pre>
-    
-    <hr>
-    <h2>Page 17</h2>
-    <img src="barrera_page_017.png" alt="Barrera Page 17">
-    <button onclick="toggleTranscription('t17')">Show Transcription</button>
-    <pre id="t17">FISICO NATURALES, MEDICO QUIRURGICAS 13 mete en un cabildo de negros mandingas, quando están de fiesta o ofrecen las honrras por algún negro capataz o cacique de sus cabildos, quando se ha muerto y lo tienen en el túmulo. Y así, con sus ademanes de manos y bociferaciones, sin tocar en cielo y tierra ni aun menos tocar el más mínimo punto de anatomía, les parece que los facultatibos españoles, son unos zoquetes sin pulir, y así adulteran la verdadera ciencia médica quirúrgica haciéndose, como urvanos, propio, lo que fue inbención agena, (como me sucedió a mí en la introducción y dirección en todas las Américas de la sal de la Laguna de la Higuera calcinada, que hacen con ella algunas curaciones admirables, con las varias modi- ficaciones que con ella se hacen y de mí aprendieron. Jamás me dieron las gracias, antes bien me miraron con tedio todos los médicos y cirujanos havaneros, blasonando de que ellos fueron los inventores, y que los autores franceses de las Islas adyacentes ya les dieron impresos muchos remedios saludables de esta clase, y fáciles, y que la incansable experiencia y ardiente caridad de ellos, si es que ésta la han tenido y tienen, hicieron común en todas las Antillas al bien público y amor a la humanidad la dicha sal. Pero para que te desengañes de lo que dicen de los franceses, y yo añado a los yngleses, estos criollos antillanos americanos, save y cree que la nube de la arrogancia a estos escritos france- ses es una preocupación de muchos y muchísimos a quienes no alcansa la médula de la verdad. Pues para hacerse sabios ape- llidan el nombre de los libros franceses, que quando los hayan visto sera por la superficie, pues aun quando los entendieron nada les aprobecharían por faltarles la experiencia, y por eso los suce- sos en las curaciones que hacen é intentan hacer con fatales y funestos; porque no reflexionan que las enfermedades no se curan, sino con remedios destilados en el alambique de la experiencia y que faltando ésta, todo lo demás es contumeha, no sólo a la natu- raleza, sino a las obras de la naturaleza. Con suma energía y brillante exactitud de proporciones, el grande Aristóteles escribió el siguiente dicho como suyo: Videmus expertos magis id quod intendunt conscqui quam illos qui intonem absque spcrientia tant. Ved aquí, quien se fia de estos médicos
-
-</pre>
-    
-    <hr>
-    <h2>Page 18</h2>
-    <img src="barrera_page_018.png" alt="Barrera Page 18">
-    <button onclick="toggleTranscription('t18')">Show Transcription</button>
-    <pre id="t18">14 REFLEXIONES HISTORICO speculadores occiosos y mosquitos de trompetilla de la sabiduría médica, sino el que supiese que se havían extinguido de el mundo los médicos prácticos y experimentadísimos en la verdadera cien- cia médica. ¿Y quién es aquél que con sólo la razón, quiere vencer y encu- brir lo que la experiencia enseña? ¿Y quién aquél que ignora, que millares de millares de veces es la razón no solo dañosa, sino per- judicialísima a la naturaleza, que aun por eso cantó Plinio: Quis- quís Ínter médicos loqucndo pollct illico in^ierator nostrae vitae nedqui fit?. Dicen estos médicos yndianos o americanos, como los quieran llamar, que la medicina y anatomía, sólo es una pura congetura, y que nadie de los europeos comocerá mejor que ellos la natura- leza y temperamento de sus conaturales, y que los europeos no pueden también como ellos interpretar los destinos de las natu- raleza americanas, por ser estas propias a ellos y de sus emfer- mos, quienes se explican con otras varias sensaciones distintas que las de Europa. Y que assi. las emfermedades se explican más familiar y sensiblemente con los enfermos por ser estas las cir- cunstancias que pueden hacer un buen médico práctico por sólo la simple relación de el emfermo. Se hagarran como a sagrada áncora a lo que dice Platón: que para llegar uno a ser famoso médico vasta experimentar en sí, y en el temperamento de su país, todas las enfermedades que reinan; juxgando que con dificultad podría saberlas con estudiarlas sim- plemente en los libros y que quien no conoce bien el mal, y su causa, jamás podría remediarle. Non intellectui nulla est curatis morbi. No ay duda, que no se les puede contradecir a Platón, ni a ellos si fueran Platones; pero lo cierto es y que no tiene la menor duda, que si los médicos de estas Antillas lograsen un exacto cono- cimiento de sí y de el temperamento de el país, tanto con las emfermedades que en él reinan, sería un indicio manifiesto de su felicidad médica curatiba. Pero como por marabilla entre tantos como ay en estas Yslas, apenas se hallará uno, que llegue a com- prenderla, ni menos sepa adelantarse, es el mesmo argumento que hace mas demonstrable su impericia; por eso exclama Galeno
-
-</pre>
-    
-    <hr>
-    <h2>Page 19</h2>
-    <img src="barrera_page_019.png" alt="Barrera Page 19">
-    <button onclick="toggleTranscription('t19')">Show Transcription</button>
-    <pre id="t19">FISICO NATURALES, MEDICO QUIRURGICAS 15 con energía: Mirun non cst in tanta hominum multítudine qui in exercitatione versan tur inveniri, qui in illa proficiant (de ordine libror suor). Si consideramos el orden establecido por los médicos dogmá- ticos para estudiar con perfección el arte médica, parecerá a pri- mera vista el más racional de el mundo, por no conocer otra guía que la filosofía natural. Ninguno como Galeno y autorizándose con la doctrina de Hipócrates, fué el que logró mayor aplauso. Y todavía basta ser acérrimo secuaz suyo para lograr crédito de profundo médico. A tanto han llegado los plausibles créditos, fama y reputación de sus escritos, que con sólo citar en las consultas y a la vista de el vulgo un texto suyo, basta para justificar qualquiera homicidio, para que el mayor desatino quede canonizado. Lo que no tiene duda es que si estos médicos criollos supiesen lo que piensan ellos que saben, serian excelentísimos médicos y por mera casualidad se les moriría un pobre negro. Pero sucede al contrario; porque lo poco que saben, lo fundan en falsos supues- tos y así su ciencia médica es mas dañosa que su ignorancia. Por- que quando el ser erudito a la violeta es falso, entonces se aparta más de el conocimiento de la verdad, y el saber éste o el otro texto hipocrático no es saber; antes vien, es quedar mas ignorante que al principio. Con mayor discreción se opone a la verdad el engañado pre- suntuoso, que el simple ignorante. El uno no ha tenido fortuna de conocer el arte médica; y se cree poseerla quando idolatra sus errores. El otro que es el ignorante, quando dexa de ser ignorante pasa a ser sabio de repente, y así el sabio y el racional, es nece- sario que retrocedan a el estado de la ignorancia sacudiendo de este modo todo engaño, para poder abrazar y reconocer la verdad. Por eso se ve claramente que estos riveristas o que siguen tenazmente a Ribero, Hipócrates y Galeno, ellos suponen ser mé- dicos, mas en realidad no le son: viven engañados en su mesma opinión, y con tal engaño, se meten muy satisfechos a recetar a los enfermos con tal presunción, que quando juzgan hallarlos me- jorados los encuentran en la eternidad. O, quantos ay de estos casos. En la Havana se cuentan por centenares.
-
-</pre>
-    
-    <hr>
-    <h2>Page 20</h2>
-    <img src="barrera_page_020.png" alt="Barrera Page 20">
-    <button onclick="toggleTranscription('t20')">Show Transcription</button>
-    <pre id="t20">16 REFLEXIONES HISTORICO Y la verdad está en ese punto por que no alcanza su talento a más, porque están en la creencia que los principios de la natu- raleza son quatro, otros tantos los humores, elementos tempera- mentos de el cuerpo humano. Que la calentura es un calor extraño, que el hígado es el fabricante de la sangre y aunque creen en la circulación de ella, ignoran su hitinerario y el cómo le chillo se combierta, en sangre; tienen por delirio las facultades de retener, expeler, cocer y atraer, 6, con muchos otros desatinos que se for- gan, por no tener la menor tintura anatómica; ignoran las quali- dades de todos los espíritus y piensan que el calor en el estómago hace la digesción de los alimentos, sin otros mil presupuestos en que han vivido herrados hasta el año de 1794 en que el Exmo. Sor Dn. Luis de las Casas, Gobernador y Capitán General, y su siguiente el Exmo. Sor. Conde de Sta. Clara, Capitán General de la Havana y toda la Isla de Cuba con sus adyacentes, estos Ex- celentísimos Señores, como Directores de la Real Sociedad Hava- nera, han cooperado mucho en el adelantamiento de esta tan iu- portante facultad médica y con el uso de los papeles periódicos se han descubierto ocultos, famosos facultatibos que nadie de estos médicos havaneros hacía caso i menos sus conciudadanos. Y asi se han ido descubriendo y desterrando la supremacía de estos médicos docmáticos haciéndoles ver palmariamente en obras y escritos, que las obras Hipocráticas, Riberistas y Galenistas, no son misterios de fe, (ni que su consideración en tales obras, aun- que buenas), pueden ellos afirmar seguramente, si son verdaderas o falsas, sino que les parecía que con poner delante de los europeos cualquiera autoridad de estos padres primeros de la medicina, para inferir una infalible consequencia, havía suficiente para confun- dirlos, &c... Tan enagenados viven con sus antiguas costumbres, que toda- vía ignoran que las opiniones humanas, desde los primeros siglos han estado expuestas a errores, y creen, que los antiguos han podido conseguir mayor veneración y respeto que los que han vivido después de ellos; pero sus máximas y doxtrinas, no por esso han conseguido más verdad, de las que ellas ya tenían en su principio.
-
-</pre>
-    
+Como lo merece por su valor histórico y las ideas médicas y filosóficas de que hace gala su autor en diversas cuestiones importantes que en la obra se presentan. El trabajo a que nos referimos, a pesar de la literatura incorrecta y del atraso médico que para nosotros representa, tiene un singular interés por su carácter indígena y por su especialidad en el conocimiento de asuntos no tratados hasta su época por autores españoles ni extraños con relación a las antiguas colonias antillanas...
+                </pre>
+            </div>
+            <div id="fuente" class="tab-content">
+                <pre>
+Fuente atribuida: William Cullen, "Elementos de medicina práctica" (traducción española).
+La frambuesa está caracterizada por tumores... Hay dos especies: una en Guinea, llamada jauus, y otra en América, conocida como pian...
+                </pre>
+            </div>
+            <div id="original" class="tab-content">
+                <pre>
+Original en inglés (Cullen):
+Framboesia is characterized by the appearance of tumors... There are two species: one endemic to Guinea, known as yaws, and another in the Americas, referred to as pian...
+                </pre>
+            </div>
+            <div id="comentario" class="tab-content">
+                <pre>
+Este pasaje demuestra cómo Barrera no solo traduce o copia, sino que recontextualiza su material para ajustarlo a las condiciones sociales y ecológicas del Caribe colonial. La combinación de autoridad médica y experiencia local posiciona su manuscrito entre la recopilación y la producción de conocimiento original.
+                </pre>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
